@@ -1,1 +1,5 @@
 # MaskAllSkyImages
+
+
+
+![alt text](https://github.com/Bra1nsen/MaskAllSkyImages/blob/main/results/1_sky_rot.jpg)
