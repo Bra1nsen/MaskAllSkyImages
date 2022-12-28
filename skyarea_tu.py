@@ -14,7 +14,7 @@ def get_sky_area(radius, centre, image_name):
     data = np.load(image_name)
 
     # create Pillow image
-    image2 = Image.fromarray(np.asarray(data[0]).astype(np.uint8))
+    image2 = Image.fromarray(np.asarray(data[0]).astype(np.uint16))
     print(type(image2))
     cv2_img = cv2.cvtColor(np.array(image2), cv2.COLOR_GRAY2BGR)
     
@@ -22,7 +22,7 @@ def get_sky_area(radius, centre, image_name):
     # create a black image with the same size as our 
     # image that contains the moon, we then create
     # a white circle on the black image
-    mask = np.zeros(sky.shape[:2], dtype="uint8")
+    mask = np.zeros(sky.shape[:2], dtype="uint16")
     cv2.circle(mask, centre, radius, 255, -1)
     # apply the mask to our image
     masked = cv2.bitwise_and(sky, sky, mask=mask)
