@@ -10,6 +10,22 @@ from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 import matplotlib.pyplot as plt
 
+
+def convert_rggb_to_rgb(rggb): #RGGB (x,y) --> RGB = (x/2,y/2,3)
+
+ ret_arr = np.zeros((3,rggb.shape[0]//2,rggb.shape[1]//2)).astype(np.uint16)
+ blue = rggb[1::2, 1::2]    # blue
+ green1 = rggb[0::2, 1::2]  # green
+ green2 = rggb[1::2, 0::2]  # green
+ red = rggb[0::2, 0::2]     # red
+
+ ret_arr[0] = ret_arr[0] + red
+ ret_arr[1] = ret_arr[1] + (green1 + green2)/2
+ ret_arr[2] = ret_arr[2] + blue
+
+ return ret_arr #RGB = (x/2,y/2,3)
+
+
 def get_sky_area(radius, centre, image_name):
     data = np.load(image_name)
 
