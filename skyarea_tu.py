@@ -10,6 +10,11 @@ from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 import matplotlib.pyplot as plt
 
+def resize_and_mask(img, width, height, radius, centre): 
+  w, h, _ = img.shape
+  dims = (width, height)
+  resized = cv2.resize(img, dims, interpolation = cv2.INTER_AREA)
+  return resized
 
 def convert_rggb_to_rgb(rggb): #RGGB (x,y) --> RGB = (x/2,y/2,3)
 
