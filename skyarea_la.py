@@ -24,9 +24,9 @@ def get_sky_area(radius, centre, image_name):
     cv2.circle(mask, centre, radius, 255, -1)
     # apply the mask to our image
     masked = cv2.bitwise_and(sky, sky, mask=mask)
-    avgR = np.mean(masked[:,:,2])
+    avgR = np.mean(masked[:,:,0])
     avgG = np.mean(masked[:,:,1])
-    avgB = np.mean(masked[:,:,0])
+    avgB = np.mean(masked[:,:,2])
     print("Mean of channel R: ", avgR)
     print("Mean of channel G: ", avgG)
     print("MEan of channel B: ", avgB)
