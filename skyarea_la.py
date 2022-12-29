@@ -14,7 +14,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 def get_sky_area(radius, centre, image_name):
     img = Image.open(str(image_name))
     cv2_img = np.array(img)
-    cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_RGB2BGR)
+    cv2_img = cv2.cvtColor(cv2_img, cv2.COLOR_RGB2BGR) #OpenCV uses BGR color space
     
     sky = cv2_img.copy()
     # create a black image with the same size as our 
