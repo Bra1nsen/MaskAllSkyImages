@@ -24,7 +24,7 @@ def get_sky_area(radius, centre, image_name):
     # create a black image with the same size as our
     # image that contains the moon, we then create
     # a white circle on the black image
-    mask = np.zeros(sky.shape[:2], dtype="uint8")
+    mask = np.zeros(sky.shape[:], dtype="uint8")
     cv2.circle(mask, centre, radius, 255, -1)
     # apply the mask to our image
     masked = cv2.bitwise_and(sky, sky, mask=mask)
